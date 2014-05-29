@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import os
 import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 import pytest
 
-import fields
+os.environ['DJANGO_SETTINGS_MODULE'] = 'example.settings'
+
+import compress_fields
+
 
 install_requires = [
     'django>=1.2',
@@ -16,7 +20,7 @@ install_requires = [
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['compress_field']
+        self.test_args = ['example']
         self.test_suite = True
 
     def run_tests(self):
@@ -25,9 +29,10 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 
-readme = open('./fields/README.md', 'r')
+readme = open('README.md', 'r')
 README_TEXT = readme.read()
 readme.close()
+
 
 setup(name='django_compressfield',
       url='https://github.com/valdergallo/django-compressfield',
@@ -47,7 +52,7 @@ setup(name='django_compressfield',
           'Programming Language :: Python :: 3.3',
       ],
       include_package_data=True,
-      version=fields.__version__,
+      version=compress_fields.__version__,
       install_requires=install_requires,
       cmdclass={'test': PyTest},
       packages=find_packages(where='.',
