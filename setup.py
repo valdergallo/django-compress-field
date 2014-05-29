@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
 from setuptools import setup, find_packages
+from setuptools.command.test import test as TestCommand
+import pytest
 
 import fields
 
@@ -8,6 +11,19 @@ install_requires = [
     'django>=1.2',
     'pytest',
 ]
+
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = ['compress_field']
+        self.test_suite = True
+
+    def run_tests(self):
+        #import here, cause outside the eggs aren't loaded
+        errno = pytest.main(self.test_args)
+        sys.exit(errno)
+
 
 readme = open('./fields/README.md', 'r')
 README_TEXT = readme.read()
@@ -33,6 +49,7 @@ setup(name='django_compressfield',
       include_package_data=True,
       version=fields.__version__,
       install_requires=install_requires,
+      cmdclass={'test': PyTest},
       packages=find_packages(where='.',
                              exclude=('*test*', '*example*')),
 )
