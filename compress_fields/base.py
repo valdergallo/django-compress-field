@@ -51,6 +51,6 @@ class FileCompressorField(FileField):
         return file_content
 
     def save(self, name, content, save=True):
-        super(FileCompressor, self).save(name, content, save=True)
+        super(FileCompressorField, self).save(name, content, save=True)
         # add on post_save auto compress content field
         self.compress_file(async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE)
