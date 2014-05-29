@@ -7,14 +7,15 @@ Custom Field for Django that auto compact file upload
 Usage
 =====
 
-#todo
+todo
 
 Shell
 =====
 
-#todo
+todo
 
-## Developer
+Developer
+=========
 
 ```bash
 # download code
