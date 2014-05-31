@@ -6,7 +6,7 @@ from django.core.files.base import File
 from django.conf import settings
 
 BASEDIR = os.path.dirname(__file__)
-FIXTURE = os.path.join(BASEDIR, 'fixtures', 'text.txt')
+FIXTURE = os.path.join(BASEDIR, 'data', 'text.txt')
 
 
 class TestCompressTestCase(TestCase):
@@ -43,3 +43,12 @@ class TestCompressTestCase(TestCase):
 
         my_content = MyContent.objects.get(id=my_content.id)
         self.assertEqual(my_content.upload_file.name, 'mycontent/test_fixture.zip')
+
+    def test_if_is_compressed_must_return_true(self):
+        my_content = self.create_my_content()
+        my_content.upload_file.compress()
+        self.assertTrue(my_content.upload_file.is_compressed)
+
+    def test_if_is_compressed_must_return_false(self):
+        my_content = self.create_my_content()
+        self.assertFalse(my_content.upload_file.is_compressed)

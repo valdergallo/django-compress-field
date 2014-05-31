@@ -16,7 +16,8 @@ class CompressFieldFile(FieldFile):
 
     def _is_compressed(self):
         basename, ext = os.path.splitext(self.name)
-        return self.compress_ext == ext
+        compress_ext = '.' + self.compress_ext
+        return compress_ext == ext
     is_compressed = property(_is_compressed)
 
     def _compress_name(self):

@@ -12,7 +12,7 @@ from django.conf import settings
 
 def runtests():
     TestRunner = get_runner(settings)
-    test_runner = TestRunner(verbosity=1, interactive=True)
+    test_runner = TestRunner(verbosity=2, interactive=True)
     failures = test_runner.run_tests(['core'])
     sys.exit(bool(failures))
 
