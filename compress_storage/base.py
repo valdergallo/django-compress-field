@@ -25,10 +25,6 @@ class CompressFieldFile(FieldFile):
         return basename + ('.' + self.compress_ext)
     compress_name = property(_compress_name)
 
-    def get_compress_name(self):
-        basename, ext = os.path.splitext(self.name)
-        return basename + ('.' + self.compress_ext)
-
     def compress_content(self, delete_old_file=True):
         """
         Method to change for new implementations
