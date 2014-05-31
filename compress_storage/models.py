@@ -12,6 +12,6 @@ class ZipFileField(models.FileField):
 
 try:
     from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^django_choices_flow\.models\.(ZipField)"])
+    add_introspection_rules([], ["^django_choices_flow\.models\.(ZipFileField)"])
 except ImportError:
     pass
