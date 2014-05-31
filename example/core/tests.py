@@ -4,6 +4,10 @@ from django.test import TestCase
 from example.core.models import MyContent
 from django.core.files.base import File
 from django.conf import settings
+try:
+    ioError = WindowsError
+except NameError:
+    ioError = IOError
 
 BASEDIR = os.path.dirname(__file__)
 FIXTURE = os.path.join(BASEDIR, 'data', 'text.txt')
@@ -16,7 +20,7 @@ class TestCompressTestCase(TestCase):
         try:
             temp_file_path = os.path.join(settings.MEDIA_ROOT, 'mycontent', 'test_fixture.txt')
             os.unlink(temp_file_path)
-        except (IOError, OSError, AttributeError):
+        except (OSError, AttributeError, ioError):
             pass
 
     def create_my_content(self):
