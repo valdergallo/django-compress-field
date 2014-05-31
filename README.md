@@ -17,6 +17,21 @@ Features
 - Suport Django 1.2+
 - Celery support - async compress file with Celery
 
+Django Settings Configurations
+==============================
+
+```python
+
+FILE_COMPRESS_DELETE_OLD_FILE = True # to delete old files after compressed
+FILE_COMPRESS_DELETE_OLD_FILE = False # to not delete old files after compressed
+
+
+INSTALLED_APPS = (
+    ...
+    ...
+    'compress_storage',
+)
+```
 
 Usage
 =====

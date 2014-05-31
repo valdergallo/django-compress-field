@@ -41,7 +41,7 @@ class CompressFieldFile(FieldFile):
         if delete_old_file:
             self.storage.delete(old_name)
 
-    def compress(self, async=True, delete_old_file=True):
+    def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
         if async and task:
             file_content = task(self.compress_content).delay(delete_old_file=delete_old_file)
         else:
