@@ -10,9 +10,6 @@ class ZipCompressFieldFile(CompressFieldFile):
     compress_ext = 'zip'
 
     def compress_content(self, delete_old_file=True):
-        """
-        Method to change for new implementations
-        """
         compress_file_fullname = os.path.join(settings.MEDIA_ROOT, self.compress_name)
 
         if self.is_compressed:
