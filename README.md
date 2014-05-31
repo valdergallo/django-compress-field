@@ -15,7 +15,7 @@ Features
 - Delete onde file that was compressed on zip
 - Suport for South Migrations
 - Suport Django 1.2+
-- Celery suport - async compress file with Celery
+- Celery support - async compress file with Celery
 
 
 Usage
