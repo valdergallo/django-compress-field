@@ -4,6 +4,15 @@ Django Compress Storage
 Custom Storage for Django that auto compact file upload
 
 
+Features
+========
+
+- Compress FileUpload storage file with Zip
+- Delete onde file that was compressed on zip
+- Suport for South Migrations
+- Suport Django 1.2+
+
+
 Usage
 =====
 
@@ -55,3 +64,5 @@ setup.py test
 setup.py clean
 
 ```
+
+
