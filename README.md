@@ -7,12 +7,36 @@ Custom Storage for Django that auto compact file upload
 Usage
 =====
 
-todo
+```python
+
+# example model.py
+
+from django.db import models
+from compress_storage import ZipFileField
+
+class MyContent(models.Model):
+    name = models.CharField(max_length=150)
+    create_date = models.DateTimeField(auto_now=True)
+    upload_file = ZipFileField(upload_to='mycontent/')
+
+    def __unicode__(self):
+        return self.name
+
+```
 
 Shell
 =====
 
-todo
+```python
+
+>>> from example.core import MyContent
+>>> m = MyContent.objects.get(id=2)
+>>> m.upload_file
+<ZipCompressFieldFile: mycontent/test.txt>
+>>> m.upload_file.compress()
+>>> m.upload_file
+<ZipCompressFieldFile: mycontent/test.zip>
+```
 
 Developer
 =========
@@ -22,20 +46,12 @@ Developer
 git clone https://github.com/valdergallo/django-compress-storage
 
 # install developer packages
-make
-
-# check coverage
-make coverage
+setup.py develop
 
 # test project
-make test
+setup.py test
 
 #clean extra content
-make clean
+setup.py clean
 
-#send package
-make send_package
-
-#test py2 and py3
-tox
 ```
