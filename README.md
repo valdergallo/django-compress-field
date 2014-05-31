@@ -16,6 +16,10 @@ Features
 - Suport for South Migrations
 - Suport Django 1.2+
 - Celery support - async compress file with Celery
+- Windows Support
+- Linux support
+- iOS support
+
 
 Django Settings Configurations
 ==============================
