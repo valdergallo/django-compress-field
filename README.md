@@ -1,6 +1,10 @@
 Django Compress Storage
 =======================
 
+[![Build Status](https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master)](https://travis-ci.org/valdergallo/django-compress-storage)
+[![Coverage Status](https://coveralls.io/repos/valdergallo/django-compress-storage/badge.png)](https://coveralls.io/r/valdergallo/django-compress-storage)
+
+
 Custom Storage for Django that auto compact file upload
 
 
