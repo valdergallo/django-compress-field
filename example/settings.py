@@ -62,7 +62,7 @@ INSTALLED_APPS = (
     # 'django.contrib.messages',
     # 'django.contrib.admin',
     # 'django.contrib.admindocs',
-    'core',
+    'example.core',
     'compress_storage',
     # 'django_pytest',
 )

@@ -5,28 +5,13 @@ import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'example.test_settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'example.settings'
 
 import compress_storage
 
-
 install_requires = [
     'django>=1.2',
-    'pytest',
 ]
-
-
-class PyTest(TestCommand):
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = ['example']
-        self.test_suite = True
-
-    def run_tests(self):
-        import pytest
-        errno = pytest.main(self.test_args)
-        sys.exit(errno)
-
 
 readme = open('README.md', 'r')
 README_TEXT = readme.read()
@@ -53,7 +38,7 @@ setup(name='django_compressfield',
       include_package_data=True,
       version=compress_storage.__version__,
       install_requires=install_requires,
-      cmdclass={'test': PyTest},
+      test_suite = "runtest.runtests",
       packages=find_packages(where='.',
-                             exclude=('*test*', '*example*')),
+                             exclude=('*test*', '*example*', 'runtest')),
 )
