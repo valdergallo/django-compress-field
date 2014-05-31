@@ -3,7 +3,6 @@ import zipfile
 import os
 from .base import CompressFieldFile
 from django.conf import settings
-from django.core.files.base import File
 
 
 class ZipCompressFieldFile(CompressFieldFile):
