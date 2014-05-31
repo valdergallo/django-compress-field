@@ -72,10 +72,15 @@ class CompressFieldFile(FieldFile):
         """
         raise NotImplementedError()
 
-    def _update_filefield_name(self):
+    def _update_filefield_name(self, delete_old_file=True):
         # update field value
+        old_name = self.name
+
         setattr(self.instance, self.field.name, self.compress_name)
         self.instance.save()
+
+        if delete_old_file:
+            self.storage.delete(old_name)
 
     def compress(self, async=True, delete_old_file=True):
         if async and task:
@@ -83,6 +88,6 @@ class CompressFieldFile(FieldFile):
         else:
             file_content = self.compress_content(delete_old_file=delete_old_file)
 
-        self._update_filefield_name()
+        self._update_filefield_name(delete_old_file=delete_old_file)
 
         return file_content
