@@ -2,8 +2,6 @@ help:
 	@echo "dev  		install development packages"
 	@echo "setup 		install compress_fields"
 	@echo "test 		run default test suit"
-	@echo "test-cov  	run default test suit with coverage"
-	@echo "test-pep  	run default test suit with pep8"
 
 
 dev:
@@ -15,12 +13,5 @@ setup:
 
 
 test:
-	py.test compress_fields
+	python setup.py test
 
-
-test-cov:
-	py.test compress_fields --cov compress_fields --cov-report html
-
-
-test-pep:
-	py.test compress_fields --pep8
