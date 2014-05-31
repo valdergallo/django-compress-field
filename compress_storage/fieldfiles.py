@@ -8,7 +8,7 @@ from django.conf import settings
 class ZipCompressFieldFile(CompressFieldFile):
     compress_ext = 'zip'
 
-    def compress_content(self, delete_old_file=True):
+    def compress_content(self):
         compress_file_fullname = os.path.join(settings.MEDIA_ROOT, self.compress_name)
 
         if self.is_compressed:

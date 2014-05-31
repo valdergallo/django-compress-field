@@ -25,7 +25,7 @@ class CompressFieldFile(FieldFile):
         return basename + ('.' + self.compress_ext)
     compress_name = property(_compress_name)
 
-    def compress_content(self, delete_old_file=True):
+    def compress_content(self):
         """
         Method to change for new implementations
         """
@@ -43,9 +43,9 @@ class CompressFieldFile(FieldFile):
 
     def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
         if async and task:
-            file_content = task(self.compress_content).delay(delete_old_file=delete_old_file)
+            file_content = task(self.compress_content).delay()
         else:
-            file_content = self.compress_content(delete_old_file=delete_old_file)
+            file_content = self.compress_content()
 
         self._update_filefield_name(delete_old_file=delete_old_file)
 
