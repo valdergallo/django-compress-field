@@ -52,3 +52,7 @@ class TestCompressTestCase(TestCase):
     def test_if_is_compressed_must_return_false(self):
         my_content = self.create_my_content()
         self.assertFalse(my_content.upload_file.is_compressed)
+
+    def test_compress_name(self):
+        my_content = self.create_my_content()
+        self.assertEqual(my_content.upload_file.compress_name, 'mycontent/test_fixture.zip')
