@@ -63,5 +63,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # 'django.contrib.admindocs',
     'core',
-    'compress_fields',
+    'compress_storage',
+    # 'django_pytest',
 )
+
+# TEST_RUNNER = 'django_pytest.test_runner.run_tests'
