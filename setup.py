@@ -4,11 +4,10 @@ import os
 import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
-import pytest
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'example.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'example.test_settings'
 
-import compress_fields
+import compress_storage
 
 
 install_requires = [
@@ -24,7 +23,7 @@ class PyTest(TestCommand):
         self.test_suite = True
 
     def run_tests(self):
-        #import here, cause outside the eggs aren't loaded
+        import pytest
         errno = pytest.main(self.test_args)
         sys.exit(errno)
 
@@ -52,7 +51,7 @@ setup(name='django_compressfield',
           'Programming Language :: Python :: 3.3',
       ],
       include_package_data=True,
-      version=compress_fields.__version__,
+      version=compress_storage.__version__,
       install_requires=install_requires,
       cmdclass={'test': PyTest},
       packages=find_packages(where='.',

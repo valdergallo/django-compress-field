@@ -1,7 +1,7 @@
-Django CompressField
-====================
+Django Compress Storage
+=======================
 
-Custom Field for Django that auto compact file upload
+Custom Storage for Django that auto compact file upload
 
 
 Usage
@@ -19,7 +19,7 @@ Developer
 
 ```bash
 # download code
-git clone https://github.com/valdergallo/django-compressfield
+git clone https://github.com/valdergallo/django-compress-storage
 
 # install developer packages
 make
