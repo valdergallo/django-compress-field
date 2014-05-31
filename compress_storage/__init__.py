@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
-__version__ = '0.0.1'
+__version__ = '0.6.1'
 
-from zipcompress import ZipField
+from .fields import ZipField
+from .storages import ZipCompressStorage
