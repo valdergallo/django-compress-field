@@ -12,17 +12,34 @@ FIXTURE = os.path.join(BASEDIR, 'fixtures', 'text.txt')
 class TestCompressTestCase(TestCase):
 
     def setUp(self):
-        self.dummyfile = File(open(FIXTURE, 'r'), name=FIXTURE)
+        self.dummyfile = File(open(FIXTURE, 'r'), name='test_fixture.txt')
         try:
-            temp_file_path = os.path.join(settings.MEDIA_ROOT, 'mycontent', 'text.txt')
+            temp_file_path = os.path.join(settings.MEDIA_ROOT, 'mycontent', 'test_fixture.txt')
             os.unlink(temp_file_path)
-        except (IOError, WindowsError, AttributeError):
+        except (IOError, OSError, AttributeError):
             pass
 
-    def test_save_file_on_model(self):
+    def create_my_content(self):
         my_content = MyContent()
         my_content.name = 'test'
         my_content.upload_file = self.dummyfile
         my_content.save()
+        return my_content
 
-        self.assertEqual(my_content.upload_file.name, 'mycontent/text.txt')
+    def test_save_file_on_model(self):
+        my_content = self.create_my_content()
+
+        self.assertEqual(my_content.upload_file.name, 'mycontent/test_fixture.txt')
+
+    def test_save_zipfile_on_model(self):
+        my_content = self.create_my_content()
+        my_content.upload_file.compress()
+
+        self.assertEqual(my_content.upload_file.name, 'mycontent/test_fixture.zip')
+
+    def test_is_compress_has_updated_register(self):
+        my_content = self.create_my_content()
+        my_content.upload_file.compress()
+
+        my_content = MyContent.objects.get(id=my_content.id)
+        self.assertEqual(my_content.upload_file.name, 'mycontent/test_fixture.zip')
