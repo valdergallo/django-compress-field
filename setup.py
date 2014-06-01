@@ -11,6 +11,7 @@ import compress_storage
 
 install_requires = [
     'django>=1.2',
+    # 'compress_storage==%s' % compress_storage.__version__,
 ]
 
 readme = open('README.md', 'r')
