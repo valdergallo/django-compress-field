@@ -11,7 +11,7 @@ Features
 --------
 
 - Compress FileUpload storage file with Zip
-- Delete onde file that was compressed on zip
+- Delete old file that was compressed on zip
 - Support for South Migrations
 - Support Django 1.2+
 - Celery support - async compress file with Celery
