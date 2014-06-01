@@ -18,11 +18,11 @@ README_TEXT = readme.read()
 readme.close()
 
 
-setup(name='django_compressfield',
-      url='https://github.com/valdergallo/django-compressfield',
+setup(name='django-compress-storage',
+      url='https://github.com/valdergallo/django-compress-storage',
       author="valdergallo",
       author_email='valdergallo@gmail.com',
-      keywords='Django Compress Field',
+      keywords='Django Compress Field Zip Tar GZip',
       description='Automantic compress fiels after upload',
       license='Apache License',
       long_description=README_TEXT,
