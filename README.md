@@ -12,13 +12,14 @@ Features
 
 - Compress FileUpload storage file with Zip
 - Delete onde file that was compressed on zip
-- Suport for South Migrations
-- Suport Django 1.2+
+- Support for South Migrations
+- Support Django 1.2+
 - Celery support - async compress file with Celery
 - Windows Support
 - Linux support
 - iOS support
-- Suport for Python3
+- Support for Python3
+- Support for Python2.6+
 
 
 Motivation
