@@ -13,7 +13,7 @@ def runtests():
 
     TestRunner = get_runner(settings)
     test_runner = TestRunner(verbosity=2, interactive=True)
-    failures = test_runner.run_tests(['core'])
+    failures = test_runner.run_tests([])
     sys.exit(bool(failures))
 
 if __name__ == '__main__':
