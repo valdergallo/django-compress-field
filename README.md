@@ -18,6 +18,7 @@ Features
 - Windows Support
 - Linux support
 - iOS support
+- Suport for Python3
 
 
 Motivation
