@@ -12,7 +12,8 @@ class ZipCompressFieldFile(CompressFieldFile):
     def compress_content(self):
         compress_file_fullname = os.path.join(settings.MEDIA_ROOT, self.compress_name)
 
-        if sys.version_info > (2, 7):
+        # to work with py2.6 or lower
+        if sys.version_info < (2, 7):
             compress_file_fullname = open(compress_file_fullname, 'w')
 
         if self.is_compressed:
