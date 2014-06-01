@@ -19,7 +19,8 @@ class ZipCompressFieldFile(CompressFieldFile):
         if self.is_compressed:
             return 'File alredy compress'
 
-        with ZipFile(compress_file_fullname, 'w', ZIP_DEFLATED) as ziped:
-            ziped.write(str(self.file.name))
+        ziped = ZipFile(compress_file_fullname, 'w', ZIP_DEFLATED)
+        ziped.write(str(self.file.name))
+        ziped.close()
 
         return ziped
