@@ -8,7 +8,7 @@ Custom Field for Django that auto compact file uploaded
 
 
 Features
-========
+--------
 
 - Compress FileUpload storage file with Zip
 - Delete onde file that was compressed on zip
@@ -20,8 +20,14 @@ Features
 - iOS support
 
 
+Motivation
+----------
+
+On my job we need save all upload files for 5 year. Losing a lot space on server with this files, because this I created this application.
+
+
 Django Settings Configurations
-==============================
+------------------------------
 
 ```python
 
@@ -36,8 +42,9 @@ INSTALLED_APPS = (
 )
 ```
 
+
 Usage
-=====
+-----
 
 ```python
 
@@ -56,8 +63,9 @@ class MyContent(models.Model):
 
 ```
 
+
 Shell
-=====
+-----
 
 ```python
 
@@ -70,8 +78,9 @@ Shell
 <ZipCompressFieldFile: mycontent/test.zip>
 ```
 
+
 Developer
-=========
+---------
 
 ```bash
 # download code
