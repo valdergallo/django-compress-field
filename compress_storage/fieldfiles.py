@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import zipfile
+from zipfile import ZipFile, ZIP_DEFLATED
 import os
 from .base import CompressFieldFile
 from django.conf import settings
@@ -14,9 +14,7 @@ class ZipCompressFieldFile(CompressFieldFile):
         if self.is_compressed:
             return 'File alredy compress'
 
-        in_memory_zip = file(compress_file_fullname, 'w')
-        ziped = zipfile.ZipFile(in_memory_zip, "w", zipfile.ZIP_DEFLATED)
-        ziped.write(self.file.name)
-        ziped.close()
+        with ZipFile(compress_file_fullname, 'w', ZIP_DEFLATED) as ziped:
+            ziped.write(str(self.file.name))
 
         return ziped
