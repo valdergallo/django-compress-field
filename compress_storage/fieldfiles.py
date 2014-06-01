@@ -14,7 +14,7 @@ class ZipCompressFieldFile(CompressFieldFile):
 
         # to work with py2.6 or lower
         if sys.version_info < (2, 7):
-            compress_file_fullname = open(compress_file_fullname, 'w')
+            compress_file_fullname = file(compress_file_fullname, 'w')
 
         if self.is_compressed:
             return 'File alredy compress'
