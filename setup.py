@@ -5,7 +5,7 @@ import sys
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'example.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'example.test_settings'
 
 import compress_storage
 

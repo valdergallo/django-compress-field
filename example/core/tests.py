@@ -17,9 +17,11 @@ class TestCompressTestCase(TestCase):
 
     def setUp(self):
         self.dummyfile = File(open(FIXTURE, 'r'), name='test_fixture.txt')
+        self.uploaded_file_path = os.path.join(settings.MEDIA_ROOT,
+                                               'mycontent',
+                                               'test_fixture.txt')
         try:
-            temp_file_path = os.path.join(settings.MEDIA_ROOT, 'mycontent', 'test_fixture.txt')
-            os.unlink(temp_file_path)
+            os.unlink(self.uploaded_file_path)
         except (OSError, AttributeError, ioError):
             pass
 
@@ -60,3 +62,9 @@ class TestCompressTestCase(TestCase):
     def test_compress_name(self):
         my_content = self.create_my_content()
         self.assertEqual(my_content.upload_file.compress_name, 'mycontent/test_fixture.zip')
+
+    def test_if_compress_delete_file_uncompress(self):
+        my_content = self.create_my_content()
+        my_content.upload_file.compress()
+
+        self.assertFalse(os.path.exists(self.uploaded_file_path))
