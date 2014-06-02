@@ -8,7 +8,7 @@ class ZipCompressFieldFile(CompressFieldFile):
     compress_ext = 'zip'
 
     def compress_content(self):
-        compress_file_fullname = self.compress_name
+        compress_file_fullname = self.compress_full_name
 
         # to work with py2.6 or lower
         if sys.version_info < (2, 7):
