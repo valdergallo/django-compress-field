@@ -12,7 +12,7 @@ FILE_COMPRESS_DELETE_OLD_FILE = getattr(settings, 'FILE_COMPRESS_DELETE_OLD_FILE
 
 
 class CompressFieldFile(FieldFile):
-    compress_ext  = None
+    compress_ext = None
 
     def _is_compressed(self):
         basename, ext = os.path.splitext(self.name)
@@ -39,6 +39,7 @@ class CompressFieldFile(FieldFile):
         self.instance.save()
 
         if delete_old_file:
+            self.file.close()
             self.storage.delete(old_name)
 
     def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
