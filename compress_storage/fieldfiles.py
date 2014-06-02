@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-from zipfile import ZipFile, ZIP_DEFLATED
+import zipfile
 import sys
 from .base import CompressFieldFile
+try:
+    import zlib
+    compression = zipfile.ZIP_DEFLATED
+except ImportError:
+    compression = zipfile.ZIP_STORED
 
 
 class ZipCompressFieldFile(CompressFieldFile):
@@ -12,13 +17,10 @@ class ZipCompressFieldFile(CompressFieldFile):
 
         # to work with py2.6 or lower
         if sys.version_info < (2, 7):
-            compress_file_fullname = file(compress_file_fullname, 'w')
+            compress_file_fullname = open(compress_file_fullname, 'w+b')
 
-        if self.is_compressed:
-            return 'File alredy compress'
-
-        ziped = ZipFile(compress_file_fullname, 'w', ZIP_DEFLATED)
-        ziped.write(str(self.file.name))
-        ziped.close()
-
-        return ziped
+        if not zipfile.is_zipfile(self.file.name):
+            ziped = zipfile.ZipFile(compress_file_fullname, 'w', compression=compression)
+            ziped.write(self.file.name, self.base_name)
+            ziped.close()
+            return ziped
