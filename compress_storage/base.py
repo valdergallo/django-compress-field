@@ -20,6 +20,10 @@ class CompressFieldFile(FieldFile):
         return compress_ext == ext
     is_compressed = property(_is_compressed)
 
+    def _base_name(self):
+        return os.path.basename(self.file.name)
+    base_name = property(_base_name)
+
     def _compress_name(self):
         basename, ext = os.path.splitext(self.name)
         return basename + ('.' + self.compress_ext)
@@ -52,6 +56,9 @@ class CompressFieldFile(FieldFile):
         self._update_filefield_name(delete_old_file=delete_old_file)
 
     def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
+        if self.is_compressed:
+            return u'This file is alredy compress'
+
         if async and task:
             wrapper = task(self.compress_wrapper).delay(delete_old_file=delete_old_file)
         else:
