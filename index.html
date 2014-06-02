@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Django-compress-storage : Custom Field for Django that auto compact file uploaded" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Django-compress-storage</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/valdergallo/django-compress-storage">View on GitHub</a>
+
+          <h1 id="project_title">Django-compress-storage</h1>
+          <h2 id="project_tagline">Custom Field for Django that auto compact file uploaded</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/valdergallo/django-compress-storage/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/valdergallo/django-compress-storage/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="django-compress-storage" class="anchor" href="#django-compress-storage"><span class="octicon octicon-link"></span></a>Django Compress Storage</h1>
+
+<p><a href="https://travis-ci.org/valdergallo/django-compress-storage"><img src="https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master" alt="Build Status"></a></p>
+
+<p>Custom Field for Django that auto compact file uploaded</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Compress FileUpload storage file with Zip</li>
+<li>Delete old file that was compressed on zip</li>
+<li>Support for South Migrations</li>
+<li>Support Django 1.2+</li>
+<li>Celery support - async compress file with Celery</li>
+<li>Windows Support</li>
+<li>Linux support</li>
+<li>iOS support</li>
+<li>Support for Python3</li>
+<li>Support for Python2.6+</li>
+</ul><h2>
+<a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h2>
+
+<p>On my job we need save all upload files for 5 year. Losing a lot space on server with this files, because this I created this application.</p>
+
+<h2>
+<a name="django-settings-configurations" class="anchor" href="#django-settings-configurations"><span class="octicon octicon-link"></span></a>Django Settings Configurations</h2>
+
+<div class="highlight highlight-python"><pre>
+<span class="n">FILE_COMPRESS_DELETE_OLD_FILE</span> <span class="o">=</span> <span class="bp">True</span> <span class="c"># to delete old files after compressed</span>
+<span class="n">FILE_COMPRESS_DELETE_OLD_FILE</span> <span class="o">=</span> <span class="bp">False</span> <span class="c"># to not delete old files after compressed</span>
+
+
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="o">...</span>
+    <span class="s">'compress_storage'</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-python"><pre>
+<span class="c"># example model.py</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">compress_storage</span> <span class="kn">import</span> <span class="n">ZipFileField</span>
+
+<span class="k">class</span> <span class="nc">MyContent</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="n">create_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">upload_file</span> <span class="o">=</span> <span class="n">ZipFileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s">'mycontent/'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</pre></div>
+
+<h2>
+<a name="shell" class="anchor" href="#shell"><span class="octicon octicon-link"></span></a>Shell</h2>
+
+<div class="highlight highlight-python"><pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">example.core</span> <span class="kn">import</span> <span class="n">MyContent</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">MyContent</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span>
+<span class="o">&lt;</span><span class="n">ZipCompressFieldFile</span><span class="p">:</span> <span class="n">mycontent</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span>
+<span class="o">&lt;</span><span class="n">ZipCompressFieldFile</span><span class="p">:</span> <span class="n">mycontent</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">zip</span><span class="o">&gt;</span>
+</pre></div>
+
+<h2>
+<a name="developer" class="anchor" href="#developer"><span class="octicon octicon-link"></span></a>Developer</h2>
+
+<div class="highlight highlight-bash"><pre><span class="c"># download code</span>
+git clone https://github.com/valdergallo/django-compress-storage
+
+<span class="c"># install developer packages</span>
+setup.py develop
+
+<span class="c"># test project</span>
+setup.py <span class="nb">test</span>
+
+<span class="c">#clean extra content</span>
+setup.py clean
+
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Django-compress-storage maintained by <a href="https://github.com/valdergallo">valdergallo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-51565422-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
