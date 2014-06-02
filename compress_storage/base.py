@@ -47,12 +47,14 @@ class CompressFieldFile(FieldFile):
             self.file.close()
             self.storage.delete(old_name)
 
-    def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
-        if async and task:
-            file_content = task(self.compress_content).delay()
-        else:
-            file_content = self.compress_content()
-
+    def compress_wrapper(self, delete_old_file=True):
+        self.compress_content()
         self._update_filefield_name(delete_old_file=delete_old_file)
 
-        return file_content
+    def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
+        if async and task:
+            wrapper = task(self.compress_wrapper).delay(delete_old_file=delete_old_file)
+        else:
+            wrapper = self.compress_wrapper(delete_old_file=delete_old_file)
+
+        return wrapper
