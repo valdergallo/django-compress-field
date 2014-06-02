@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-import sys
 from setuptools import setup, find_packages
-from setuptools.command.test import test as TestCommand
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'example.test_settings'
 
@@ -13,9 +11,12 @@ install_requires = [
     'django>=1.2',
 ]
 
-readme = open('README.md', 'r')
-README_TEXT = readme.read()
-readme.close()
+try:
+    readme = open('README.md', 'r')
+    README_TEXT = readme.read()
+    readme.close()
+except IOError:
+    README_TEXT = 'Automantic compress files after upload'
 
 
 setup(name='django-compress-storage',
