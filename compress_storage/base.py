@@ -15,13 +15,13 @@ class CompressFieldFile(FieldFile):
     compress_ext = None
 
     def _is_compressed(self):
-        basename, ext = os.path.splitext(self.name)
+        basename, ext = os.path.splitext(self.file.name)
         compress_ext = '.' + self.compress_ext
         return compress_ext == ext
     is_compressed = property(_is_compressed)
 
     def _compress_name(self):
-        basename, ext = os.path.splitext(self.name)
+        basename, ext = os.path.splitext(self.file.name)
         return basename + ('.' + self.compress_ext)
     compress_name = property(_compress_name)
 
