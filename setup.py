@@ -38,7 +38,7 @@ setup(name='django-compress-storage',
       include_package_data=True,
       version=compress_storage.__version__,
       install_requires=install_requires,
-      test_suite = "runtest.runtests",
+      test_suite="runtest.runtests",
       packages=find_packages(where='.',
                              exclude=('*test*', '*example*', 'runtest')),
 )
