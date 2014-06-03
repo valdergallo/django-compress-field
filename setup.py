@@ -11,22 +11,24 @@ install_requires = [
     'django>=1.2',
 ]
 
-try:
-    readme = open('README.md', 'r')
-    README_TEXT = readme.read()
-    readme.close()
-except IOError:
-    README_TEXT = 'Automantic compress files after upload'
+
+def readme():
+    try:
+        with open('README.md') as f:
+            return f.read()
+    except:
+        return 'Automantic compress files after upload'
 
 
 setup(name='django-compress-storage',
       url='https://github.com/valdergallo/django-compress-storage',
+      download_url='https://github.com/valdergallo/django-compress-storage/tarball/v%s/' % compress_storage.__version__,
       author="valdergallo",
       author_email='valdergallo@gmail.com',
-      keywords='Django Compress Field Zip Tar GZip',
+      keywords=['django', 'compress', 'field', 'zip', 'tar', 'gzip'],
       description='Automantic compress files after upload',
-      license='Apache License',
-      long_description=README_TEXT,
+      long_description=readme(),
+      license='FREEBSD',
       classifiers=[
           'Framework :: Django',
           'Operating System :: OS Independent',

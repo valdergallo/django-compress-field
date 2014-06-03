@@ -2,7 +2,8 @@ Django Compress Storage
 =======================
 
 [![Build Status](https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master)](https://travis-ci.org/valdergallo/django-compress-storage)
-
+[![Latest Version](http://img.shields.io/pypi/v/django-compress-storage.svg)](https://pypi.python.org/pypi/django-compress-storage)
+[![BSD License](http://img.shields.io/badge/license-BSD-yellow.svg)](http://opensource.org/licenses/BSD-3-Clause)
 
 Custom Field for Django that auto compact file uploaded
 
@@ -14,10 +15,10 @@ Features
 - Delete old file that was compressed on zip
 - Support for South Migrations
 - Support Django 1.2+
-- Celery support - async compress file with Celery
+- Celery 2.8+ support - async compress file with Celery
 - Windows Support
 - Linux support
-- iOS support
+- OSx support
 - Support for Python3
 - Support for Python2.6+
 
@@ -78,6 +79,26 @@ Shell
 >>> m.upload_file.compress()
 >>> m.upload_file
 <ZipCompressFieldFile: mycontent/test.zip>
+```
+
+
+Using with Celery
+-----------------
+
+By default compress_field use Celery if Celery are installed on Site Packages.
+You just need create one post_save on your model to start compress. If you wanna
+auto compress after save.
+
+```python
+# listeners.py file
+
+from django.db.models.signals import post_save
+
+def auto_compress_file_on_post_save(sender, instance, **kargs):
+    instace.upload_file.compress()
+
+post_save.connect(auto_compress_file_on_post_save, sender=MyContent)
+
 ```
 
 
