@@ -25,14 +25,21 @@ class CompressFieldFile(FieldFile):
     base_name = property(_base_name)
 
     def _compress_name(self):
-        basename, ext = os.path.splitext(self.name)
-        return basename + ('.' + self.compress_ext)
+        if not hasattr(self, '_avaliable_compress_name'):
+            basename, ext = os.path.splitext(self.name)
+            compress_name = basename + ('.' + self.compress_ext)
+            self._avaliable_compress_name = self.storage.get_available_name(compress_name)
+        return self._avaliable_compress_name
+
     compress_name = property(_compress_name)
 
     def _compress_full_name(self):
-        basename, ext = os.path.splitext(self.file.name)
-        return basename + ('.' + self.compress_ext)
+        return os.path.join(self.storage.location, self.compress_name)
+
     compress_full_name = property(_compress_full_name)
+
+    def get_available_name(self):
+        return self.storage.get_available_name(self.compress_name)
 
     def compress_content(self):
         """
