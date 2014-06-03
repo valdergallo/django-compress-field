@@ -21,7 +21,7 @@ def release_lock(lock_id):
 
 @task(serializer='pickle')
 def task_compress_wrapper(instance, field, delete_old_file):
-    lock_id = '{0}-io-lock-{1}'.format(instance.__class__.name, instance.id)
+    lock_id = '{0}-io-lock-{1}'.format(instance.__class__.__name__, instance.id)
 
     if acquire_lock(lock_id):
         instance_field = getattr(instance, field)
