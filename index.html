@@ -34,7 +34,9 @@
         <h1>
 <a name="django-compress-storage" class="anchor" href="#django-compress-storage"><span class="octicon octicon-link"></span></a>Django Compress Storage</h1>
 
-<p><a href="https://travis-ci.org/valdergallo/django-compress-storage"><img src="https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/valdergallo/django-compress-storage"><img src="https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master" alt="Build Status"></a>
+<a href="https://pypi.python.org/pypi/django-compress-storage"><img src="http://img.shields.io/pypi/v/django-compress-storage.svg" alt="Latest Version"></a>
+<a href="http://opensource.org/licenses/BSD-3-Clause"><img src="http://img.shields.io/badge/license-BSD-yellow.svg" alt="BSD License"></a></p>
 
 <p>Custom Field for Django that auto compact file uploaded</p>
 
@@ -46,10 +48,10 @@
 <li>Delete old file that was compressed on zip</li>
 <li>Support for South Migrations</li>
 <li>Support Django 1.2+</li>
-<li>Celery support - async compress file with Celery</li>
+<li>Celery 2.8+ support - async compress file with Celery</li>
 <li>Windows Support</li>
 <li>Linux support</li>
-<li>iOS support</li>
+<li>OSx support</li>
 <li>Support for Python3</li>
 <li>Support for Python2.6+</li>
 </ul><h2>
@@ -102,6 +104,24 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span>
 <span class="o">&lt;</span><span class="n">ZipCompressFieldFile</span><span class="p">:</span> <span class="n">mycontent</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">zip</span><span class="o">&gt;</span>
+</pre></div>
+
+<h2>
+<a name="using-with-celery" class="anchor" href="#using-with-celery"><span class="octicon octicon-link"></span></a>Using with Celery</h2>
+
+<p>By default compress_field use Celery if Celery are installed on Site Packages.
+You just need create one post_save on your model to start compress. If you wanna
+auto compress after save.</p>
+
+<div class="highlight highlight-python"><pre><span class="c"># listeners.py file</span>
+
+<span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
+
+<span class="k">def</span> <span class="nf">auto_compress_file_on_post_save</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+    <span class="n">instace</span><span class="o">.</span><span class="n">upload_file</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
+
+<span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">auto_compress_file_on_post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">MyContent</span><span class="p">)</span>
+
 </pre></div>
 
 <h2>
