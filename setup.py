@@ -14,7 +14,8 @@ install_requires = [
 
 def readme():
     try:
-        with open('README.md') as f:
+        os.system('pandoc --from=markdown --to=rst README.md -o README.rst')
+        with open('README.rst') as f:
             return f.read()
     except:
         return 'Automantic compress files after upload'
