@@ -5,7 +5,10 @@ except ImportError:
     task = None
 
 from django.core.cache import cache
+from django.conf import settings
 LOCK_EXPIRE = 60 * 5
+
+FILE_COMPRESS_QUEUE = getattr(settings, 'FILE_COMPRESS_QUEUE', 'Celery')
 
 
 # cache.add fails if if the key already exists
@@ -19,7 +22,7 @@ def release_lock(lock_id):
     return cache.delete(lock_id)
 
 
-@task(serializer='pickle')
+@task(serializer='pickle', queue=FILE_COMPRESS_QUEUE)
 def task_compress_wrapper(instance, field, delete_old_file):
     lock_id = '{0}-io-lock-{1}'.format(instance.__class__.__name__, instance.id)
 

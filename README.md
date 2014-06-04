@@ -37,6 +37,9 @@ Django Settings Configurations
 FILE_COMPRESS_DELETE_OLD_FILE = True # to delete old files after compressed
 FILE_COMPRESS_DELETE_OLD_FILE = False # to not delete old files after compressed
 
+# Feature only for version v9.0+
+FILE_COMPRESS_QUEUE = 'Celery' # by default queue is Celery, but you can change this with this var on settings
+
 
 INSTALLED_APPS = (
     ...
