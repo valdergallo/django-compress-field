@@ -7,6 +7,19 @@ Django Compress Storage
 
 Custom Field for Django that auto compact file uploaded
 
+Install
+-------
+
+```bash
+    pip install django-compress-storage
+```
+or by source code
+```bash
+    git clone https://github.com/valdergallo/django-compress-storage/
+    python setup.py install
+```
+
+
 
 Features
 --------
