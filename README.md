@@ -4,6 +4,7 @@ Django Compress Storage
 [![Build Status](https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master)](https://travis-ci.org/valdergallo/django-compress-storage)
 [![Latest Version](http://img.shields.io/pypi/v/django-compress-storage.svg)](https://pypi.python.org/pypi/django-compress-storage)
 [![BSD License](http://img.shields.io/badge/license-BSD-yellow.svg)](http://opensource.org/licenses/BSD-3-Clause)
+[![Pypi Download](https://pypip.in/d/django-compress-storage/badge.png)](https://www.djangopackages.com/packages/p/django-compress-storage)
 
 Custom Field for Django that auto compact file uploaded
 
