@@ -29,7 +29,7 @@ Features
 - Delete old file that was compressed on zip
 - Support for South Migrations
 - Support Django 1.2+
-- Celery 2.8+ support - async compress file with Celery
+- Celery 2.5+ support - async compress file with Celery
 - Windows Support
 - Linux support
 - OSx support
