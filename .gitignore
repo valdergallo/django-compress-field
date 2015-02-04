@@ -56,3 +56,4 @@ coverage.xml
 docs/_build/
 
 README.rst
+.DS_Store
