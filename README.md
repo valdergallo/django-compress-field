@@ -6,7 +6,7 @@ Django Compress Storage
 [![BSD License](http://img.shields.io/badge/license-BSD-yellow.svg)](http://opensource.org/licenses/BSD-3-Clause)
 [![Pypi Download](https://pypip.in/d/django-compress-storage/badge.png)](https://www.djangopackages.com/packages/p/django-compress-storage)
 
-Custom Field for Django that auto compact file uploaded
+Custom ZipFileField for Django that auto compact file uploaded
 
 Install
 -------
