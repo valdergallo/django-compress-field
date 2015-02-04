@@ -33,5 +33,5 @@ def task_compress_wrapper(instance, field, delete_old_file):
         return True
 
     # task is locked by IO
-    print 'IO Lock Task'
+    print('IO Lock Task')
     return False
