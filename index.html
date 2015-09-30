@@ -1,180 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Django-compress-storage : Custom Field for Django that auto compact file uploaded" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Django-compress-field by valdergallo</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Django-compress-storage</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Django-compress-field</h1>
+        <p>Custom Field for Django that auto compact file uploaded</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/valdergallo/django-compress-storage">View on GitHub</a>
+        <p class="view"><a href="https://github.com/valdergallo/django-compress-field">View the Project on GitHub <small>valdergallo/django-compress-field</small></a></p>
 
-          <h1 id="project_title">Django-compress-storage</h1>
-          <h2 id="project_tagline">Custom Field for Django that auto compact file uploaded</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/valdergallo/django-compress-storage/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/valdergallo/django-compress-storage/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+        <ul>
+          <li><a href="https://github.com/valdergallo/django-compress-field/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/valdergallo/django-compress-field/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/valdergallo/django-compress-field">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h1>
-<a name="django-compress-storage" class="anchor" href="#django-compress-storage"><span class="octicon octicon-link"></span></a>Django Compress Storage</h1>
+<a id="django-compress-storage" class="anchor" href="#django-compress-storage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Django Compress Storage</h1>
 
-<p><a href="https://travis-ci.org/valdergallo/django-compress-storage"><img src="https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master" alt="Build Status"></a>
-<a href="https://pypi.python.org/pypi/django-compress-storage"><img src="http://img.shields.io/pypi/v/django-compress-storage.svg" alt="Latest Version"></a>
-<a href="http://opensource.org/licenses/BSD-3-Clause"><img src="http://img.shields.io/badge/license-BSD-yellow.svg" alt="BSD License"></a></p>
+<p><a href="https://travis-ci.org/valdergallo/django-compress-field"><img src="https://travis-ci.org/valdergallo/django-compress-field.png?branch=master" alt="Build Status"></a>
+<a href="https://pypi.python.org/pypi/django-compress-field"><img src="http://img.shields.io/pypi/v/django-compress-field.svg" alt="Latest Version"></a>
+<a href="http://opensource.org/licenses/BSD-3-Clause"><img src="http://img.shields.io/badge/license-BSD-yellow.svg" alt="BSD License"></a>
+<a href="https://www.djangopackages.com/packages/p/django-compress-field"><img src="https://pypip.in/d/django-compress-field/badge.png" alt="Pypi Download"></a></p>
 
-<p>Custom Field for Django that auto compact file uploaded</p>
+<p>Custom ZipFileField for Django that auto compact file uploaded</p>
+
+<pre><code>    PROJECT RENAMED django-compress-storage to django-compress-field
+</code></pre>
 
 <h2>
-<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
 
-<div class="highlight highlight-bash"><pre>    pip install django-compress-storage
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>    pip install django-compress-field</pre></div>
 
 <p>or by source code</p>
 
-<div class="highlight highlight-bash"><pre>    git clone https://github.com/valdergallo/django-compress-storage/
-    python setup.py install
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>    git clone https://github.com/valdergallo/django-compress-field/
+    python setup.py install</pre></div>
 
 <h2>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
 <li>Compress FileUpload storage file with Zip</li>
 <li>Delete old file that was compressed on zip</li>
 <li>Support for South Migrations</li>
 <li>Support Django 1.2+</li>
-<li>Celery 2.8+ support - async compress file with Celery</li>
+<li>Celery 2.5+ support - async compress file with Celery</li>
 <li>Windows Support</li>
 <li>Linux support</li>
 <li>OSx support</li>
 <li>Support for Python3</li>
 <li>Support for Python2.6+</li>
-</ul><h2>
-<a name="motivation" class="anchor" href="#motivation"><span class="octicon octicon-link"></span></a>Motivation</h2>
+</ul>
+
+<h2>
+<a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation</h2>
 
 <p>On my job we need save all upload files for 5 year. Losing a lot space on server with this files, because this I created this application.</p>
 
 <h2>
-<a name="django-settings-configurations" class="anchor" href="#django-settings-configurations"><span class="octicon octicon-link"></span></a>Django Settings Configurations</h2>
+<a id="django-settings-configurations" class="anchor" href="#django-settings-configurations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Django Settings Configurations</h2>
 
-<div class="highlight highlight-python"><pre>
-<span class="n">FILE_COMPRESS_DELETE_OLD_FILE</span> <span class="o">=</span> <span class="bp">True</span> <span class="c"># to delete old files after compressed</span>
-<span class="n">FILE_COMPRESS_DELETE_OLD_FILE</span> <span class="o">=</span> <span class="bp">False</span> <span class="c"># to not delete old files after compressed</span>
+<div class="highlight highlight-source-python"><pre>
+FILE_COMPRESS_DELETE_OLD_FILE <span class="pl-k">=</span> <span class="pl-c1">True</span> <span class="pl-c"># to delete old files after compressed</span>
+FILE_COMPRESS_DELETE_OLD_FILE <span class="pl-k">=</span> <span class="pl-c1">False</span> <span class="pl-c"># to not delete old files after compressed</span>
 
-<span class="c"># Feature only for version v9.0+</span>
-<span class="n">FILE_COMPRESS_QUEUE</span> <span class="o">=</span> <span class="s">'Celery'</span> <span class="c"># by default queue is Celery, but you can change this with this var on settings</span>
+<span class="pl-c"># Feature only for version v9.0+</span>
+FILE_COMPRESS_QUEUE <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Celery<span class="pl-pds">'</span></span> <span class="pl-c"># by default queue is Celery, but you can change this with this var on settings</span>
 
 
-<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="o">...</span>
-    <span class="o">...</span>
-    <span class="s">'compress_storage'</span><span class="p">,</span>
-<span class="p">)</span>
+INSTALLED_APPS <span class="pl-k">=</span> (
+    ...
+    ...
+    <span class="pl-s"><span class="pl-pds">'</span>compress_field<span class="pl-pds">'</span></span>,
+)</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-python"><pre>
+<span class="pl-c"># example model.py</span>
+
+<span class="pl-k">from</span> django.db <span class="pl-k">import</span> models
+<span class="pl-k">from</span> compress_field <span class="pl-k">import</span> ZipFileField
+
+<span class="pl-k">class</span> <span class="pl-en">MyContent</span>(<span class="pl-e">models.Model</span>):
+    name <span class="pl-k">=</span> models.CharField(<span class="pl-smi">max_length</span><span class="pl-k">=</span><span class="pl-c1">150</span>)
+    create_date <span class="pl-k">=</span> models.DateTimeField(<span class="pl-smi">auto_now</span><span class="pl-k">=</span><span class="pl-c1">True</span>)
+    upload_file <span class="pl-k">=</span> ZipFileField(<span class="pl-smi">upload_to</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>mycontent/<span class="pl-pds">'</span></span>)
+
+    <span class="pl-k">def</span> <span class="pl-en"><span class="pl-c1">__unicode__</span></span>(<span class="pl-smi">self</span>):
+        <span class="pl-k">return</span> <span class="pl-v">self</span>.name
 </pre></div>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="shell" class="anchor" href="#shell" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shell</h2>
 
-<div class="highlight highlight-python"><pre>
-<span class="c"># example model.py</span>
-
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-<span class="kn">from</span> <span class="nn">compress_storage</span> <span class="kn">import</span> <span class="n">ZipFileField</span>
-
-<span class="k">class</span> <span class="nc">MyContent</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-    <span class="n">create_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">upload_file</span> <span class="o">=</span> <span class="n">ZipFileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s">'mycontent/'</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-
-</pre></div>
+<div class="highlight highlight-source-python"><pre>
+<span class="pl-k">&gt;&gt;&gt;</span> <span class="pl-k">from</span> example.core <span class="pl-k">import</span> MyContent
+<span class="pl-k">&gt;&gt;&gt;</span> m <span class="pl-k">=</span> MyContent.objects.get(<span class="pl-smi">id</span><span class="pl-k">=</span><span class="pl-c1">2</span>)
+<span class="pl-k">&gt;&gt;&gt;</span> m.upload_file
+<span class="pl-k">&lt;</span>ZipCompressFieldFile: mycontent<span class="pl-k">/</span>test.txt<span class="pl-k">&gt;</span>
+<span class="pl-k">&gt;&gt;&gt;</span> m.upload_file.compress()
+<span class="pl-k">&gt;&gt;&gt;</span> m.upload_file
+<span class="pl-k">&lt;</span>ZipCompressFieldFile: mycontent<span class="pl-k">/</span>test.zip<span class="pl-k">&gt;</span></pre></div>
 
 <h2>
-<a name="shell" class="anchor" href="#shell"><span class="octicon octicon-link"></span></a>Shell</h2>
-
-<div class="highlight highlight-python"><pre>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">example.core</span> <span class="kn">import</span> <span class="n">MyContent</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">MyContent</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span>
-<span class="o">&lt;</span><span class="n">ZipCompressFieldFile</span><span class="p">:</span> <span class="n">mycontent</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">txt</span><span class="o">&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">upload_file</span>
-<span class="o">&lt;</span><span class="n">ZipCompressFieldFile</span><span class="p">:</span> <span class="n">mycontent</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">zip</span><span class="o">&gt;</span>
-</pre></div>
-
-<h2>
-<a name="using-with-celery" class="anchor" href="#using-with-celery"><span class="octicon octicon-link"></span></a>Using with Celery</h2>
+<a id="using-with-celery" class="anchor" href="#using-with-celery" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using with Celery</h2>
 
 <p>If Celery are installed on Site Packages. You just need create one post_save on
 your model to use async compress.</p>
 
-<div class="highlight highlight-python"><pre><span class="c"># listeners.py file</span>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"># listeners.py file</span>
 
-<span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
+<span class="pl-k">from</span> django.db.models.signals <span class="pl-k">import</span> post_save
 
-<span class="k">def</span> <span class="nf">auto_compress_file_on_post_save</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
-    <span class="n">instance</span><span class="o">.</span><span class="n">upload_file</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
+<span class="pl-k">def</span> <span class="pl-en">auto_compress_file_on_post_save</span>(<span class="pl-smi">sender</span>, <span class="pl-smi">instance</span>, **<span class="pl-smi">kargs</span>):
+    instance.upload_file.compress()
 
-<span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">auto_compress_file_on_post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">MyContent</span><span class="p">)</span>
-
+post_save.connect(auto_compress_file_on_post_save, <span class="pl-smi">sender</span><span class="pl-k">=</span>MyContent)
 </pre></div>
 
 <p>If you don´t wanna use Celery async compress:</p>
 
-<div class="highlight highlight-python"><pre>
-<span class="k">def</span> <span class="nf">auto_compress_file_on_post_save</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
-    <span class="n">instance</span><span class="o">.</span><span class="n">upload_file</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">async</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight highlight-source-python"><pre>
+<span class="pl-k">def</span> <span class="pl-en">auto_compress_file_on_post_save</span>(<span class="pl-smi">sender</span>, <span class="pl-smi">instance</span>, **<span class="pl-smi">kargs</span>):
+    instance.upload_file.compress(<span class="pl-smi">async</span><span class="pl-k">=</span><span class="pl-c1">False</span>)
 
-<span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">auto_compress_file_on_post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">MyContent</span><span class="p">)</span>
-
+post_save.connect(auto_compress_file_on_post_save, <span class="pl-smi">sender</span><span class="pl-k">=</span>MyContent)
 </pre></div>
 
 <h2>
-<a name="developer" class="anchor" href="#developer"><span class="octicon octicon-link"></span></a>Developer</h2>
+<a id="developer" class="anchor" href="#developer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developer</h2>
 
-<div class="highlight highlight-bash"><pre><span class="c"># download code</span>
-git clone https://github.com/valdergallo/django-compress-storage
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># download code</span>
+git clone https://github.com/valdergallo/django-compress-field
 
-<span class="c"># install developer packages</span>
+<span class="pl-c"># install developer packages</span>
 setup.py develop
 
-<span class="c"># test project</span>
-setup.py <span class="nb">test</span>
+<span class="pl-c"># test project</span>
+setup.py <span class="pl-c1">test</span>
 
-<span class="c">#clean extra content</span>
+<span class="pl-c">#clean extra content</span>
 setup.py clean
-
 </pre></div>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Django-compress-storage maintained by <a href="https://github.com/valdergallo">valdergallo</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/valdergallo">valdergallo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
-
+    <script src="javascripts/scale.fix.js"></script>
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -185,7 +176,6 @@ setup.py clean
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
