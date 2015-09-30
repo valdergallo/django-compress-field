@@ -1,22 +1,26 @@
 Django Compress Storage
 =======================
 
-[![Build Status](https://travis-ci.org/valdergallo/django-compress-storage.png?branch=master)](https://travis-ci.org/valdergallo/django-compress-storage)
-[![Latest Version](http://img.shields.io/pypi/v/django-compress-storage.svg)](https://pypi.python.org/pypi/django-compress-storage)
+[![Build Status](https://travis-ci.org/valdergallo/django-compress-field.png?branch=master)](https://travis-ci.org/valdergallo/django-compress-field)
+[![Latest Version](http://img.shields.io/pypi/v/django-compress-field.svg)](https://pypi.python.org/pypi/django-compress-field)
 [![BSD License](http://img.shields.io/badge/license-BSD-yellow.svg)](http://opensource.org/licenses/BSD-3-Clause)
-[![Pypi Download](https://pypip.in/d/django-compress-storage/badge.png)](https://www.djangopackages.com/packages/p/django-compress-storage)
+[![Pypi Download](https://pypip.in/d/django-compress-field/badge.png)](https://www.djangopackages.com/packages/p/django-compress-field)
 
 Custom ZipFileField for Django that auto compact file uploaded
+
+```
+    PROJECT RENAMED django-compress-storage to django-compress-field
+```
 
 Install
 -------
 
 ```bash
-    pip install django-compress-storage
+    pip install django-compress-field
 ```
 or by source code
 ```bash
-    git clone https://github.com/valdergallo/django-compress-storage/
+    git clone https://github.com/valdergallo/django-compress-field/
     python setup.py install
 ```
 
@@ -58,7 +62,7 @@ FILE_COMPRESS_QUEUE = 'Celery' # by default queue is Celery, but you can change 
 INSTALLED_APPS = (
     ...
     ...
-    'compress_storage',
+    'compress_field',
 )
 ```
 
@@ -71,7 +75,7 @@ Usage
 # example model.py
 
 from django.db import models
-from compress_storage import ZipFileField
+from compress_field import ZipFileField
 
 class MyContent(models.Model):
     name = models.CharField(max_length=150)
@@ -136,7 +140,7 @@ Developer
 
 ```bash
 # download code
-git clone https://github.com/valdergallo/django-compress-storage
+git clone https://github.com/valdergallo/django-compress-field
 
 # install developer packages
 setup.py develop

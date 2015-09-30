@@ -12,6 +12,6 @@ class ZipFileField(models.FileField):
 
 try:
     from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^compress_storage\.models\.(ZipFileField)"])
+    add_introspection_rules([], ["^compress_field\.models\.(ZipFileField)"])
 except ImportError:
     pass

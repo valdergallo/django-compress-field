@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'example.test_settings'
 
-import compress_storage
+import compress_field
 
 install_requires = [
     'django>=1.2',
@@ -21,9 +21,9 @@ def readme():
         return 'Automantic compress files after upload'
 
 
-setup(name='django-compress-storage',
-      url='https://github.com/valdergallo/django-compress-storage',
-      download_url='https://github.com/valdergallo/django-compress-storage/tarball/v%s/' % compress_storage.__version__,
+setup(name='django-compress-field',
+      url='https://github.com/valdergallo/django-compress-field',
+      download_url='https://github.com/valdergallo/django-compress-field/tarball/v%s/' % compress_field.__version__,
       author="valdergallo",
       author_email='valdergallo@gmail.com',
       keywords=['django', 'compress', 'field', 'zip', 'tar', 'gzip'],
@@ -40,7 +40,7 @@ setup(name='django-compress-storage',
           'Programming Language :: Python :: 3.3',
       ],
       include_package_data=True,
-      version=compress_storage.__version__,
+      version=compress_field.__version__,
       install_requires=install_requires,
       test_suite="runtest.runtests",
       packages=find_packages(where='.',
