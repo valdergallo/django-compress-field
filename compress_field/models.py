@@ -9,6 +9,17 @@ class ZipFileField(models.FileField):
     """
     attr_class = ZipCompressFieldFile
 
+    def south_field_triple(self):
+        try:
+            from south.modelsinspector import introspector
+            cls_name = '{0}.{1}'.format(
+                self.__class__.__module__,
+                self.__class__.__name__)
+            args, kwargs = introspector(self)
+            return cls_name, args, kwargs
+        except ImportError:
+            pass
+
 
 try:
     from south.modelsinspector import add_introspection_rules
