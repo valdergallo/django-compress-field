@@ -4,7 +4,7 @@ Django Compress Storage
 [![Build Status](https://travis-ci.org/valdergallo/django-compress-field.png?branch=master)](https://travis-ci.org/valdergallo/django-compress-field)
 [![Latest Version](http://img.shields.io/pypi/v/django-compress-field.svg)](https://pypi.python.org/pypi/django-compress-field)
 [![BSD License](http://img.shields.io/badge/license-BSD-yellow.svg)](http://opensource.org/licenses/BSD-3-Clause)
-[![Pypi Download](http://img.shields.io/pypi/d/django-compress-field.svg)](https://www.djangopackages.com/packages/p/django-compress-field)
+[![Pypi Download](http://img.shields.io/pypi/dm/django-compress-field.svg)](https://www.djangopackages.com/packages/p/django-compress-field)
 
 Custom ZipFileField for Django that auto compact file uploaded
 
