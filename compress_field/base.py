@@ -5,8 +5,14 @@ except ImportError:
     task = None
 
 import os
-from django.conf import settings
+
+try:
+    from django.conf import settings
+except ImportError:
+    settings = {}
+
 from django.db.models.fields.files import FieldFile
+
 
 FILE_COMPRESS_DELETE_OLD_FILE = getattr(settings, 'FILE_COMPRESS_DELETE_OLD_FILE', True)
 
