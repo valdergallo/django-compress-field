@@ -2,7 +2,7 @@
 import os
 import shutil
 from django.test import TestCase
-from example.core.models import MyContent
+from example.models import MyContent
 from django.core.files.base import File
 from django.conf import settings
 try:

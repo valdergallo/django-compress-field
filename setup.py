@@ -22,7 +22,7 @@ tests_requires = [
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['compress_field', '--cov=compress_field', '-vrsx']
+        self.test_args = ['compress_field', 'tests', '--cov=compress_field', '-vrsx']
         self.test_suite = True
 
     def run_tests(self):
