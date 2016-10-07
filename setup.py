@@ -63,5 +63,7 @@ setup(name='django-compress-field',
       install_requires=install_requires,
       tests_require=tests_requires,
       cmdclass={'test': PyTest},
+      zip_safe=False,
+      platforms='any',
       packages=find_packages(where='.',
                              exclude=('*test*', '*example*', 'runtest')))
