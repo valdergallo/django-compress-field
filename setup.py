@@ -1,15 +1,34 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+import sys
 from setuptools import setup, find_packages
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'example.test_settings'
+from setuptools.command.test import test as TestCommand
 
 import compress_field
 
 install_requires = [
     'django>=1.2',
 ]
+
+tests_requires = [
+    'pytest==3.0.2',
+    'pytest-django==2.9.1',
+    'pytest-cov==2.3.1',
+]
+
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = ['compress_field', '--cov=compress_field', '-vrsx']
+        self.test_suite = True
+
+    def run_tests(self):
+        # import here, cause outside the eggs aren't loaded
+        import pytest
+        errno = pytest.main(self.test_args)
+        sys.exit(errno)
 
 
 def readme():
@@ -42,7 +61,7 @@ setup(name='django-compress-field',
       include_package_data=True,
       version=compress_field.__version__,
       install_requires=install_requires,
-      test_suite="runtest.runtests",
+      tests_require=tests_requires,
+      cmdclass={'test': PyTest},
       packages=find_packages(where='.',
-                             exclude=('*test*', '*example*', 'runtest')),
-)
+                             exclude=('*test*', '*example*', 'runtest')))

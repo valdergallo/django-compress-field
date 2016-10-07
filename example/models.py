@@ -1,5 +1,5 @@
 from django.db import models
-from compress_field import ZipFileField
+from compress_field.models import ZipFileField
 
 
 class MyContent(models.Model):
