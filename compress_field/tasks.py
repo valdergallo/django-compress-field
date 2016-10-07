@@ -5,8 +5,12 @@ except ImportError:
     task = None
 
 from django.core.cache import cache
-from django.conf import settings
 LOCK_EXPIRE = 60 * 5
+
+try:
+    from django.conf import settings
+except ImportError:
+    settings = {}
 
 FILE_COMPRESS_QUEUE = getattr(settings, 'FILE_COMPRESS_QUEUE', 'Celery')
 
