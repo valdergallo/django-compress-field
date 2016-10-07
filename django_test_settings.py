@@ -5,6 +5,8 @@ INSTALLED_APPS = (
     'example',
 )
 
+FILE_COMPRESS_DELETE_OLD_FILE = False
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
