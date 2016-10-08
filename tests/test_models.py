@@ -79,4 +79,4 @@ class TestCompressTestCase(TestCase):
 
         my_content2 = self.create_my_content()
         my_content2.upload_file.compress()
-        self.assertEqual(my_content2.upload_file.name.replace('\\', '/'), UPLOADED_ZIPFILE2_PATH)
+        self.assertNotEqual(my_content2.upload_file.name.replace('\\', '/'), UPLOADED_ZIPFILE_PATH)
