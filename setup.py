@@ -37,7 +37,7 @@ def readme():
         os.system('pandoc --from=markdown --to=rst README.md -o README.rst')
         with open('README.rst') as f:
             return f.read()
-    except:
+    except Exception:
         return 'Automantic compress files after upload'
 
 
@@ -57,7 +57,7 @@ setup(name='django-compress-field',
           'Programming Language :: Python',
           'Programming Language :: Python :: 2.6',
           'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.3',
+          'Programming Language :: Python :: 3.6',
       ],
       include_package_data=True,
       version=compress_field.__version__,
