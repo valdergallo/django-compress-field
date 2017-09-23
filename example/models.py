@@ -1,3 +1,4 @@
+from __future__ import absolute_import, unicode_literals
 from django.db import models
 from compress_field.models import ZipFileField
 
@@ -7,5 +8,5 @@ class MyContent(models.Model):
     create_date = models.DateTimeField(auto_now=True)
     upload_file = ZipFileField(upload_to='mycontent/2014/06/03/')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name

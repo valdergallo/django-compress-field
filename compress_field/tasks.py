@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals
 try:
     from celery.task import task
 except ImportError:
@@ -28,7 +29,8 @@ def release_lock(lock_id):
 
 @task(serializer='pickle', queue=FILE_COMPRESS_QUEUE)
 def task_compress_wrapper(instance, field, delete_old_file):
-    lock_id = '{0}-io-lock-{1}'.format(instance.__class__.__name__, instance.id)
+    lock_id = '{0}-io-lock-{1}'.format(
+        instance.__class__.__name__, instance.id)
 
     if acquire_lock(lock_id):
         instance_field = getattr(instance, field)

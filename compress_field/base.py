@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals
 try:
     from celery.task import task
 except ImportError:
@@ -14,7 +15,8 @@ except ImportError:
 from django.db.models.fields.files import FieldFile
 
 
-FILE_COMPRESS_DELETE_OLD_FILE = getattr(settings, 'FILE_COMPRESS_DELETE_OLD_FILE', True)
+FILE_COMPRESS_DELETE_OLD_FILE = getattr(settings,
+                                        'FILE_COMPRESS_DELETE_OLD_FILE', True)
 
 
 class CompressFieldFile(FieldFile):
@@ -34,7 +36,9 @@ class CompressFieldFile(FieldFile):
         if not hasattr(self, '_avaliable_compress_name'):
             basename, ext = os.path.splitext(self.name)
             compress_name = basename + ('.' + self.compress_ext)
-            self._avaliable_compress_name = self.storage.get_available_name(compress_name)
+            self._avaliable_compress_name = self.storage.get_available_name(
+                compress_name
+            )
         return self._avaliable_compress_name
 
     compress_name = property(_compress_name)
@@ -69,13 +73,15 @@ class CompressFieldFile(FieldFile):
         self._update_filefield_name(delete_old_file=delete_old_file)
         return True
 
-    def compress(self, async=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
+    def compress(self, async=True,
+                 delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
         if self.is_compressed:
-            return u'This file is alredy compress'
+            return 'This file is alredy compress'
 
         if async and task:
             from .tasks import task_compress_wrapper
-            wrapper = task_compress_wrapper.delay(self.instance, self.field.name, delete_old_file)
+            wrapper = task_compress_wrapper.delay(
+                self.instance, self.field.name, delete_old_file)
         else:
             wrapper = CompressFieldFile.compress_wrapper(self, delete_old_file)
 
