@@ -23,7 +23,10 @@ or by source code
     git clone https://github.com/valdergallo/django-compress-field/
     python setup.py install
 ```
-
+or 
+```
+    pip install git+https://github.com/valdergallo/django-compress-field.git
+```
 
 
 Features
@@ -37,7 +40,7 @@ Features
 - Windows Support
 - Linux support
 - OSx support
-- Support for Python3
+- Support for Python3+
 - Support for Python2.6+
 
 

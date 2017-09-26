@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from setuptools import setup, find_packages
+from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
 import compress_field
@@ -64,7 +64,8 @@ setup(name='django-compress-field',
       install_requires=install_requires,
       tests_require=tests_requires,
       cmdclass={'test': PyTest},
-      zip_safe=False,
       platforms='any',
-      packages=find_packages('compress_field')
+      packages=[
+            'compress_field'
+        ]
       )
