@@ -73,12 +73,11 @@ class CompressFieldFile(FieldFile):
         self._update_filefield_name(delete_old_file=delete_old_file)
         return True
 
-    def compress(self, async=True,
-                 delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
+    def compress(self, async_task=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
         if self.is_compressed:
             return 'This file is alredy compress'
 
-        if async and task:
+        if async_task and task:
             from .tasks import task_compress_wrapper
             wrapper = task_compress_wrapper.delay(
                 self.instance, self.field.name, delete_old_file)
