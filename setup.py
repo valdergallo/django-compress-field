@@ -13,23 +13,12 @@ install_requires = [
 
 tests_requires = [
     'django>=1.2',
-    'pytest==3.0.2',
-    'pytest-django==2.9.1',
-    'pytest-cov==2.3.1',
+    'pytest>=3.0.2',
+    'pytest-runner',
+    'pytest-django>=2.9.1',
+    'pytest-cov>=2.3.1',
 ]
 
-
-class PyTest(TestCommand):
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = ['compress_field', 'tests', '--cov=compress_field', '-vrsx']
-        self.test_suite = True
-
-    def run_tests(self):
-        # import here, cause outside the eggs aren't loaded
-        import pytest
-        errno = pytest.main(self.test_args)
-        sys.exit(errno)
 
 
 def readme():
@@ -58,12 +47,13 @@ setup(name='django-compress-field',
           'Programming Language :: Python :: 2.6',
           'Programming Language :: Python :: 2.7',
           'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
       ],
       include_package_data=True,
       version=compress_field.__version__,
       install_requires=install_requires,
       tests_require=tests_requires,
-      cmdclass={'test': PyTest},
+      setup_requires=['pytest-runner'],
       platforms='any',
       packages=[
             'compress_field'

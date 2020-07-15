@@ -1,16 +1,11 @@
 language: python
 python:
-  - 2.7
-script: python setup.py test
+  - 3.7
+script: python setup.py pytest
 env:
-  - DJANGO=1.4
-  - DJANGO=1.5
-  - DJANGO=1.6
-  - DJANGO=1.7
-  - DJANGO=1.8
-  - DJANGO=1.9
-  - DJANGO=1.10
   - DJANGO=1.11
+  - DJANGO=2.1
+  - DJANGO=3.0
 install:
   - pip install -q Django==$DJANGO -r requirements.txt
 branches:

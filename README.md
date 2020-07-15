@@ -23,7 +23,7 @@ or by source code
     git clone https://github.com/valdergallo/django-compress-field/
     python setup.py install
 ```
-or 
+or
 ```
     pip install git+https://github.com/valdergallo/django-compress-field.git
 ```
@@ -149,7 +149,7 @@ git clone https://github.com/valdergallo/django-compress-field
 setup.py develop
 
 # test project
-setup.py test
+pytest .
 
 #clean extra content
 setup.py clean
