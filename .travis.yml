@@ -1,7 +1,7 @@
 language: python
 python:
   - 3.7
-script: python setup.py pytest
+script: DJANGO_SETTINGS_MODULE=django_test_settings python setup.py pytest
 env:
   - DJANGO=1.11
   - DJANGO=2.1
