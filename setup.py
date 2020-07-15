@@ -13,21 +13,11 @@ install_requires = [
 
 tests_requires = [
     'django>=1.2',
-    'pytest>=3.0.2',
-    'pytest-runner',
-    'pytest-django>=2.9.1',
-    'pytest-cov>=2.3.1',
+    'pytest==5.4.3',
+    'pytest-runner==5.2',
+    'pytest-django==3.9.0',
+    'pytest-cov==2.10.0',
 ]
-
-
-
-def readme():
-    try:
-        os.system('pandoc --from=markdown --to=rst README.md -o README.rst')
-        with open('README.rst') as f:
-            return f.read()
-    except Exception:
-        return 'Automantic compress files after upload'
 
 
 setup(name='django-compress-field',
@@ -37,7 +27,6 @@ setup(name='django-compress-field',
       author_email='valdergallo@gmail.com',
       keywords=['django', 'compress', 'field', 'zip', 'tar', 'gzip'],
       description='Automantic compress files after upload',
-      long_description=readme(),
       license='FREEBSD',
       classifiers=[
           'Framework :: Django',
