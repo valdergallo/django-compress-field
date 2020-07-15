@@ -8,9 +8,12 @@ help:
 dev:
 	pip install -r requirements.txt
 
+upload: export DJANGO_SETTINGS_MODULE=django_test_settings
 upload:
-	python setup.py build bdist_wheel --universal upload
-	python setup.py build sdist --universal upload
+	python setup.py build bdist_wheel
+	python setup.py build sdist
+	pip install twine
+	twine upload dist/*
 
 setup:
 	python setup.py install
