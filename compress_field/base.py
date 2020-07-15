@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
+
 try:
     from celery.task import task
 except ImportError:
@@ -15,8 +16,7 @@ except ImportError:
 from django.db.models.fields.files import FieldFile
 
 
-FILE_COMPRESS_DELETE_OLD_FILE = getattr(settings,
-                                        'FILE_COMPRESS_DELETE_OLD_FILE', True)
+FILE_COMPRESS_DELETE_OLD_FILE = getattr(settings, "FILE_COMPRESS_DELETE_OLD_FILE", True)
 
 
 class CompressFieldFile(FieldFile):
@@ -24,18 +24,20 @@ class CompressFieldFile(FieldFile):
 
     def _is_compressed(self):
         basename, ext = os.path.splitext(self.name)
-        compress_ext = '.' + self.compress_ext
+        compress_ext = "." + self.compress_ext
         return compress_ext == ext
+
     is_compressed = property(_is_compressed)
 
     def _base_name(self):
         return os.path.basename(self.file.name)
+
     base_name = property(_base_name)
 
     def _compress_name(self):
-        if not hasattr(self, '_avaliable_compress_name'):
+        if not hasattr(self, "_avaliable_compress_name"):
             basename, ext = os.path.splitext(self.name)
-            compress_name = basename + ('.' + self.compress_ext)
+            compress_name = basename + ("." + self.compress_ext)
             self._avaliable_compress_name = self.storage.get_available_name(
                 compress_name
             )
@@ -75,12 +77,14 @@ class CompressFieldFile(FieldFile):
 
     def compress(self, async_task=True, delete_old_file=FILE_COMPRESS_DELETE_OLD_FILE):
         if self.is_compressed:
-            return 'This file is alredy compress'
+            return "This file is alredy compress"
 
         if async_task and task:
             from .tasks import task_compress_wrapper
+
             wrapper = task_compress_wrapper.delay(
-                self.instance, self.field.name, delete_old_file)
+                self.instance, self.field.name, delete_old_file
+            )
         else:
             wrapper = CompressFieldFile.compress_wrapper(self, delete_old_file)
 

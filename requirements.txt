@@ -1,3 +1,5 @@
-pytest==3.0.2
-pytest-cov==2.3.1
-pytest-django==2.9.1
+coverage==5.2
+pytest==5.4.3
+pytest-cov==2.10.0
+pytest-django==3.9.0
+pytest-runner==5.2
